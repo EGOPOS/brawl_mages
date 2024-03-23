@@ -1,0 +1,184 @@
+[gd_scene load_steps=8 format=3 uid="uid://bxq0dy80s5vlq"]
+
+[ext_resource type="PackedScene" uid="uid://bnm7rh360lliy" path="res://game/player/trolley_rigid.tscn" id="1_6j35u"]
+
+[sub_resource type="GDScript" id="GDScript_tmdfq"]
+script/source = "@tool
+extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$AnimationPlayer.play(\"loop\")
+"
+
+[sub_resource type="Gradient" id="Gradient_nnf3l"]
+offsets = PackedFloat32Array(0, 0.253247, 0.441558, 0.649351, 0.785714, 0.987013)
+colors = PackedColorArray(0.849396, 0.745004, 0.374434, 1, 0.675486, 0.703788, 0.638762, 1, 0.471865, 0.901199, 0.89271, 1, 0.748583, 0.915163, 0.926094, 1, 0.930008, 0.778875, 0.74148, 1, 0.444706, 0.340793, 0.896093, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sx8bt"]
+gradient = SubResource("Gradient_nnf3l")
+width = 512
+height = 512
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Animation" id="Animation_a2maa"]
+resource_name = "loop"
+length = 15.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-427, -9142), Vector2(-427, -250)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Trolley:rotation")
+tracks/1/interp = 4
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.9, 2.8, 3.9, 5.3, 6.9, 7.5, 8.4, 9.2, 10.5, 11.5, 12.9, 14.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.435726, -0.436332, -0.523599, -0.436332, -0.523599, -0.436332, -0.436332, 0.436332, 0.445059, 0.436332, 0.523599, 0.436332, 0.523599, 0.445059]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Trolley/LeftWheel/Node/CPUParticles2D2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 7.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Trolley/RightWheel/Node/CPUParticles2D2:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 7.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_flyx3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-427, -9142)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Trolley:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.435726]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Trolley/LeftWheel/Node/CPUParticles2D2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Trolley/RightWheel/Node/CPUParticles2D2:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u2t6v"]
+_data = {
+"RESET": SubResource("Animation_flyx3"),
+"loop": SubResource("Animation_a2maa")
+}
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_tmdfq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -427.0
+offset_top = -9142.0
+offset_right = 1621.0
+offset_bottom = 858.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_sx8bt")
+
+[node name="Trolley" parent="." instance=ExtResource("1_6j35u")]
+position = Vector2(574, 254)
+rotation = 5.84746
+
+[node name="LeftWheel" parent="Trolley" index="7"]
+gravity_scale = 0.0
+
+[node name="CPUParticles2D" parent="Trolley/LeftWheel/Node" index="0"]
+position = Vector2(556.216, 346.113)
+
+[node name="CPUParticles2D2" parent="Trolley/LeftWheel/Node" index="1"]
+position = Vector2(556.216, 346.113)
+direction = Vector2(-1, 0)
+
+[node name="RightWheel" parent="Trolley" index="10"]
+gravity_scale = 0.0
+
+[node name="CPUParticles2D" parent="Trolley/RightWheel/Node" index="0"]
+position = Vector2(643.246, 305.594)
+
+[node name="CPUParticles2D2" parent="Trolley/RightWheel/Node" index="1"]
+position = Vector2(643.246, 305.594)
+direction = Vector2(-1, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(556, 281)
+zoom = Vector2(1.5, 1.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_u2t6v")
+}
+
+[editable path="Trolley"]

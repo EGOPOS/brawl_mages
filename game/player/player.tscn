@@ -1,0 +1,344 @@
+[gd_scene load_steps=25 format=3 uid="uid://bcvs1rowcw302"]
+
+[ext_resource type="Script" path="res://game/player/player.gd" id="1_hg3iu"]
+[ext_resource type="Texture2D" uid="uid://cresc0svue74i" path="res://assets/player/player_base_animations.png" id="1_okbeu"]
+[ext_resource type="Script" path="res://game/player/PlayerStateMachine.gd" id="2_b64wr"]
+[ext_resource type="Script" path="res://game/player/Idle.gd" id="3_tligs"]
+[ext_resource type="Script" path="res://game/player/Run.gd" id="4_78qqs"]
+[ext_resource type="Script" path="res://game/player/LiteCast.gd" id="5_cc2hx"]
+[ext_resource type="Texture2D" uid="uid://c5o1shp5myhc6" path="res://assets/player/player_attack_animations.png" id="6_d3po7"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_eub2j"]
+properties/0/path = NodePath("AnimationPlayer:active")
+properties/0/spawn = false
+properties/0/replication_mode = 2
+properties/1/path = NodePath("AnimationPlayer:current_animation")
+properties/1/spawn = false
+properties/1/replication_mode = 2
+properties/2/path = NodePath("Sprite3D:flip_h")
+properties/2/spawn = false
+properties/2/replication_mode = 2
+properties/3/path = NodePath(".:target_position")
+properties/3/spawn = false
+properties/3/replication_mode = 1
+properties/4/path = NodePath("Sprite3D:visible")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("Sprite3D2:visible")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("Sprite3D2:flip_h")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+
+[sub_resource type="GDScript" id="GDScript_xrktk"]
+script/source = "extends Node
+
+
+func get_input_direction():
+	return Input.get_vector(\"movement_left\", \"movement_right\", \"movement_up\", \"movement_down\")
+
+func get_direction():
+	return -Vector3(-get_input_direction().y, 0, get_input_direction().x)
+"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pufw0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3jif"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="Curve" id="Curve_i0c1w"]
+max_value = 10.0
+_data = [Vector2(0, 10), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wrr2u"]
+curve = SubResource("Curve_i0c1w")
+
+[sub_resource type="Curve" id="Curve_h6n2b"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, -360), 0.0, 0.0, 0, 0, Vector2(1, 360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1omiv"]
+curve = SubResource("Curve_h6n2b")
+
+[sub_resource type="Gradient" id="Gradient_545vy"]
+colors = PackedColorArray(0.0962047, 0.0962048, 0.0962047, 1, 0.712129, 0.712129, 0.712129, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2avot"]
+gradient = SubResource("Gradient_545vy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wdcj8"]
+angle_min = -110.8
+angle_max = -110.8
+angle_curve = SubResource("CurveTexture_1omiv")
+direction = Vector3(0, 0, 0)
+initial_velocity_max = 0.3
+angular_velocity_min = -354.46
+angular_velocity_max = 289.3
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.7
+color_ramp = SubResource("GradientTexture1D_2avot")
+alpha_curve = SubResource("CurveTexture_wrr2u")
+
+[sub_resource type="SphereMesh" id="SphereMesh_c4vq6"]
+
+[sub_resource type="Animation" id="Animation_kfmop"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite3D2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite3D2:frame_coords")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2i(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w0n3l"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame_coords")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(2, 0), Vector2i(4, 0), Vector2i(6, 0), Vector2i(8, 0), Vector2i(10, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_owpi6"]
+resource_name = "run"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame_coords")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(2, 1), Vector2(4, 1), Vector2(6, 1), Vector2(8, 1), Vector2(10, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kkweh"]
+resource_name = "lite_cast"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:visible")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D2:visible")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D2:frame_coords")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2i(1, 0), Vector2i(3, 0), Vector2i(5, 0), Vector2i(7, 0), Vector2i(9, 0), Vector2i(11, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn_fireball"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jpfh0"]
+_data = {
+"RESET": SubResource("Animation_kfmop"),
+"idle": SubResource("Animation_w0n3l"),
+"lite_cast": SubResource("Animation_kkweh"),
+"run": SubResource("Animation_owpi6")
+}
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_hg3iu")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 0.2
+delta_interval = 0.2
+replication_config = SubResource("SceneReplicationConfig_eub2j")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("direction_component", "animation_component")]
+script = ExtResource("2_b64wr")
+direction_component = NodePath("../DirectionComponent")
+animation_component = NodePath("../AnimationPlayer")
+movement_speed = 8.0
+movement_acceleration = 10.0
+movement_friction = 16.0
+start_state = "Idle"
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_tligs")
+
+[node name="Run" type="Node" parent="StateMachine"]
+script = ExtResource("4_78qqs")
+
+[node name="LiteCast" type="Node" parent="StateMachine"]
+script = ExtResource("5_cc2hx")
+
+[node name="Cast" type="Node" parent="StateMachine"]
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="DirectionComponent" type="Node" parent="."]
+script = SubResource("GDScript_xrktk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_pufw0")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.07
+billboard = 2
+texture_filter = 0
+texture = ExtResource("1_okbeu")
+hframes = 12
+vframes = 7
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+pixel_size = 0.07
+billboard = 2
+texture_filter = 0
+texture = ExtResource("6_d3po7")
+hframes = 12
+frame = 1
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0158008, -0.25, -0.840064)
+visible = false
+material_overlay = SubResource("StandardMaterial3D_s3jif")
+emitting = false
+amount = 5
+explosiveness = 0.5
+visibility_aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
+process_material = SubResource("ParticleProcessMaterial_wdcj8")
+draw_pass_1 = SubResource("SphereMesh_c4vq6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jpfh0")
+}
+
+[connection signal="synchronized" from="MultiplayerSynchronizer" to="." method="_on_multiplayer_synchronizer_synchronized"]

@@ -1,0 +1,10 @@
+res://assets/dungeon_floor_material.tres::8d447e5b1f45a9dd9fe64de3de228a02::1711191735::res://.godot/exported/133200997/export-fab4d5e78bc03daf9b97da6975000a2b-dungeon_floor_material.res
+res://game/main/boom_particles.tscn::1323c16fd896a8add1c8e24620e47b74::1711192680::res://.godot/exported/133200997/export-e4f91ee1138ad1a2fe8c3885199f9a03-boom_particles.scn
+res://game/main/main.tscn::cb55382a2e5ace7e3eb66fe35908a019::1711192680::res://.godot/exported/133200997/export-2c4519489e82af2e418e1af967193363-main.scn
+res://game/player/player.tscn::c0b7ef7f940fd36e473ce2f5f15813d8::1711192680::res://.godot/exported/133200997/export-4dc4d4595ce8692af9c7d1643d47a3b1-player.scn
+res://game/userInterface/hud.tscn::d5468630e231c3d57848ebba7c4f7a89::1710949231::res://.godot/exported/133200997/export-4489be1c88a550305960b4b80c299d54-hud.scn
+res://game/userInterface/main_menu.tscn::e6fe7a001a602b1b2cba9ae397870c53::1711192680::res://.godot/exported/133200997/export-b72c20ff285b6144f93c7404a08be728-main_menu.scn
+res://game/userInterface/pause_menu.tscn::fad172ae85c529662bea9ee152d04291::1710949232::res://.godot/exported/133200997/export-9a7af27df3af011c3b22a3ead39d3c1a-pause_menu.scn
+res://game/userInterface/settings.tscn::76fc43d544c239ad6b3d73f9e9bdcb84::1710949232::res://.godot/exported/133200997/export-af8847a8e358508b47d714db9ea7bb42-settings.scn
+res://game/userInterface/user_interface.tscn::ff75e5d2f5c841ea3262a4ca445ca236::1710949232::res://.godot/exported/133200997/export-6182f85c4d403c256ef51f344c54510e-user_interface.scn
+res://default_env.tres::188cc61ec16f8c9f0c04344f2559d182::1710949027::res://.godot/exported/133200997/export-7cf3fd67ad9f55210191d77b582b8209-default_env.res

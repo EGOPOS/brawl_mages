@@ -1,0 +1,15 @@
+CollisionShape3D
+Area3D
+Node
+Timer
+Camera2D
+CPUParticles2D
+Node2D
+SubViewport
+Sprite3D
+Node3D
+VBoxContainer
+LineEdit
+Marker3D
+HBoxContainer
+TextureRect

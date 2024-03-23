@@ -1,0 +1,108 @@
+[gd_scene load_steps=4 format=3 uid="uid://pg107sskwqdf"]
+
+[ext_resource type="Script" path="res://game/userInterface/main_menu.gd" id="1_h1lnw"]
+[ext_resource type="PackedScene" uid="uid://bnt3uacv55nwv" path="res://game/userInterface/settings.tscn" id="2_hj6gs"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_oc0pa"]
+viewport_path = NodePath("Control/TextureRect/SubViewport")
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_h1lnw")
+started_scene = "res://game/main/main.tscn"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_oc0pa")
+expand_mode = 1
+
+[node name="SubViewport" type="SubViewport" parent="Control/TextureRect"]
+canvas_item_default_texture_filter = 0
+size = Vector2i(1152, 648)
+
+[node name="Buttons" type="PanelContainer" parent="Control"]
+custom_minimum_size = Vector2(135, 100)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -64.5
+offset_right = 135.0
+offset_bottom = 64.5
+grow_vertical = 2
+
+[node name="CenterContainer" type="MarginContainer" parent="Control/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Control/Buttons/CenterContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/Buttons/CenterContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="AddressEdit" type="LineEdit" parent="Control/Buttons/CenterContainer/VBoxContainer3/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 35)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "127.0.0.1"
+placeholder_text = "address"
+alignment = 1
+expand_to_text_length = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Buttons/CenterContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="HostButton" type="Button" parent="Control/Buttons/CenterContainer/VBoxContainer3/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 35)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+text = "Создать"
+
+[node name="JoinButton" type="Button" parent="Control/Buttons/CenterContainer/VBoxContainer3/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 35)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+text = "Подкл"
+
+[node name="SettingsButton" type="Button" parent="Control/Buttons/CenterContainer/VBoxContainer3/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 35)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+text = "Настройки"
+
+[node name="ExitButton" type="Button" parent="Control/Buttons/CenterContainer/VBoxContainer3/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 35)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+text = "Выход"
+
+[node name="Settings" parent="Control" instance=ExtResource("2_hj6gs")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_top = -125.0
+offset_bottom = 125.0

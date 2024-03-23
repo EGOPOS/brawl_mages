@@ -1,0 +1,110 @@
+[gd_scene load_steps=11 format=3 uid="uid://bgv82ipk7uqpf"]
+
+[sub_resource type="GDScript" id="GDScript_r4lx7"]
+script/source = "extends Node3D
+
+
+func _ready():
+	for c in get_children():
+		c.emitting = true
+	get_tree().create_timer(8.0).timeout.connect(queue_free)
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3txij"]
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+heightmap_scale = -16.0
+billboard_keep_scale = true
+point_size = 13.0
+
+[sub_resource type="Curve" id="Curve_l2yh5"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_snevw"]
+curve = SubResource("Curve_l2yh5")
+
+[sub_resource type="Gradient" id="Gradient_jb5dm"]
+offsets = PackedFloat32Array(0, 0.534392, 1)
+colors = PackedColorArray(0.987355, 0.622639, 0.089811, 1, 1, 0.349773, 0.249264, 1, 0.983624, 0.920448, 0.718207, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cm08m"]
+gradient = SubResource("Gradient_jb5dm")
+
+[sub_resource type="CurveTexture" id="CurveTexture_g80vg"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qfqmw"]
+emission_shape_scale = Vector3(1, 1, 4)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_max = 10.0
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 1.99998
+gravity = Vector3(0, 5, 0)
+scale_min = 0.8
+scale_max = 1.2
+color = Color(0.593134, 0.593134, 0.593134, 1)
+color_ramp = SubResource("GradientTexture1D_cm08m")
+alpha_curve = SubResource("CurveTexture_snevw")
+emission_curve = SubResource("CurveTexture_g80vg")
+turbulence_noise_scale = 3.12
+
+[sub_resource type="TextMesh" id="TextMesh_kan24"]
+text = "БАх! Бум!"
+font_size = 24
+pixel_size = 0.1
+depth = 0.4
+
+[sub_resource type="Skin" id="Skin_y6jau"]
+
+[node name="BoomParticles" type="Node3D"]
+script = SubResource("GDScript_r4lx7")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14, -2, 0)
+material_overlay = SubResource("StandardMaterial3D_3txij")
+cast_shadow = 0
+emitting = false
+amount = 24
+lifetime = 5.0
+one_shot = true
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_qfqmw")
+draw_pass_1 = SubResource("TextMesh_kan24")
+draw_skin = SubResource("Skin_y6jau")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76907, -2, 15.4458)
+material_overlay = SubResource("StandardMaterial3D_3txij")
+cast_shadow = 0
+emitting = false
+amount = 24
+lifetime = 5.0
+one_shot = true
+randomness = 1.0
+fixed_fps = 60
+visibility_aabb = AABB(-4, -4, -3.42851, 8, 8, 6.85702)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_qfqmw")
+draw_pass_1 = SubResource("TextMesh_kan24")
+draw_skin = SubResource("Skin_y6jau")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.76907, -2, -16.673)
+material_overlay = SubResource("StandardMaterial3D_3txij")
+cast_shadow = 0
+emitting = false
+amount = 24
+lifetime = 5.0
+one_shot = true
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_qfqmw")
+draw_pass_1 = SubResource("TextMesh_kan24")
+draw_skin = SubResource("Skin_y6jau")

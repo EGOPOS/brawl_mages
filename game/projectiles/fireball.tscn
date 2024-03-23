@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnbgt6660wjjb"]
+
+[ext_resource type="Script" path="res://game/projectiles/fireball.gd" id="1_uu7mb"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6hf2r"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Gradient" id="Gradient_p3l4c"]
+offsets = PackedFloat32Array(0, 0.507042, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gl54l"]
+gradient = SubResource("Gradient_p3l4c")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_7c3ok"]
+offsets = PackedFloat32Array(0, 0.193333, 0.473333, 0.913333)
+colors = PackedColorArray(0.717367, 0.0590694, 2.88785e-07, 1, 0.997639, 0.495792, 0.0535222, 1, 0.999111, 0.43948, 3.85046e-07, 1, 0.988281, 0.853775, 0.393768, 1)
+
+[sub_resource type="Gradient" id="Gradient_80p1t"]
+offsets = PackedFloat32Array(0, 0.453333, 1)
+colors = PackedColorArray(0.717647, 0.0588235, 0, 1, 0.956706, 0.380889, 0, 1, 1, 0.439216, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w0qqu"]
+
+[node name="Node3D" type="Area3D"]
+script = ExtResource("1_uu7mb")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.05
+billboard = 2
+texture_filter = 0
+texture = SubResource("ViewportTexture_6hf2r")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(256, 256)
+
+[node name="Node2D" type="Node2D" parent="SubViewport"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="SubViewport/Node2D"]
+position = Vector2(128, 128)
+amount = 24
+texture = SubResource("GradientTexture2D_gl54l")
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(-100, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+linear_accel_max = 5.0
+radial_accel_max = 5.0
+scale_amount_max = 1.5
+color_ramp = SubResource("Gradient_7c3ok")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="SubViewport/Node2D"]
+z_index = 1
+position = Vector2(128, 128)
+amount = 16
+texture = SubResource("GradientTexture2D_gl54l")
+emission_shape = 1
+emission_sphere_radius = 7.0
+gravity = Vector2(0, 0)
+scale_amount_max = 1.5
+color_ramp = SubResource("Gradient_80p1t")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_w0qqu")
