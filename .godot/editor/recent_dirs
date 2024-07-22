@@ -1,10 +1,13 @@
-res://game/projectiles
 C:/Users/chiki/Documents/Projects/DiscordActivity_BrawlGame/export
+res://game/projectiles
+res://game
+res://assets
+res://game/userInterface/spells
+res://game/other
+res://game/player
+C:/Users/chiki/Documents/Projects/DiscordActivity_BrawlGame/export/web
 res://
 C:/Users/chiki/Downloads
 res://core
 res://game/main
-res://assets
-res://game/player
 res://core/discordSDK
-res://game
