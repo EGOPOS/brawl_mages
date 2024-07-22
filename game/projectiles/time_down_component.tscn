@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb7tx3qyi6s61"]
+
+[ext_resource type="Script" path="res://game/projectiles/LifeTimeChangeComponent.gd" id="1_kifwm"]
+
+[node name="TimeDownComponent" type="Node"]
+script = ExtResource("1_kifwm")
+time_multiplier = 0.5

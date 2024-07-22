@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2oj7d4b0j63o"]
+
+[ext_resource type="Script" path="res://game/other/DirectionCursor.gd" id="1_aibaa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ryr57"]
+shading_mode = 0
+albedo_color = Color(0.4, 0.231373, 0.576471, 1)
+
+[node name="DirectionCursor" type="Node3D"]
+script = ExtResource("1_aibaa")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.5, 0, 0)
+material_overlay = SubResource("StandardMaterial3D_ryr57")
+cast_shadow = 0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(1, 0.2, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0.2)
+operation = 2
+size = Vector3(0.6, 0.2, 0.6)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.235355, 0, 0.214645)
+size = Vector3(1, 0.2, 0.4)

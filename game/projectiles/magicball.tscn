@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://8arb18c63jbg"]
+
+[ext_resource type="Script" path="res://game/projectiles/magicball.gd" id="1_kngjr"]
+[ext_resource type="Gradient" uid="uid://8ghlmim2b75y" path="res://assets/elements/mana.tres" id="2_l6jub"]
+[ext_resource type="Script" path="res://core/components/HitComponent.gd" id="3_gla0k"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_oxwxl"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Gradient" id="Gradient_p3l4c"]
+offsets = PackedFloat32Array(0, 0.507042, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gl54l"]
+gradient = SubResource("Gradient_p3l4c")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_68n4k"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gbduq"]
+properties/0/path = NodePath(".:target_position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="MagicBall" type="Node3D"]
+script = ExtResource("1_kngjr")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.05
+billboard = 2
+texture_filter = 0
+texture = SubResource("ViewportTexture_oxwxl")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(256, 256)
+
+[node name="Node2D" type="Node2D" parent="SubViewport"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="SubViewport/Node2D"]
+position = Vector2(128, 128)
+amount = 24
+texture = SubResource("GradientTexture2D_gl54l")
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(-100, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+linear_accel_max = 5.0
+radial_accel_max = 5.0
+scale_amount_min = 0.5
+scale_amount_max = 0.9
+color_ramp = ExtResource("2_l6jub")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="SubViewport/Node2D"]
+z_index = 1
+position = Vector2(128, 128)
+amount = 24
+texture = SubResource("GradientTexture2D_gl54l")
+emission_shape = 1
+emission_sphere_radius = 7.0
+gravity = Vector2(0, 0)
+scale_amount_max = 1.5
+color_ramp = ExtResource("2_l6jub")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="HitComponent" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("3_gla0k")
+hurt_value = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitComponent"]
+shape = SubResource("SphereShape3D_68n4k")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 0.2
+delta_interval = 0.2
+replication_config = SubResource("SceneReplicationConfig_gbduq")
+
+[connection signal="synchronized" from="MultiplayerSynchronizer" to="." method="_on_multiplayer_synchronizer_synchronized"]

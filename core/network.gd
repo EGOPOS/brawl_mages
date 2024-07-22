@@ -29,6 +29,9 @@ func _im_leave(id):
 	print("im leave: ", str(id))
 	if multiplayer.is_server():
 		main_scene.despawn_player(id)
+	if id == 1:
+		get_tree().get_root().get_node("UserInterface").queue_free()
+		get_tree().change_scene_to_file("res://game/userInterface/main_menu.tscn")
 
 func check_connection():
 	if multiplayer.is_server():

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dscy88c1xrrdg"]
+
+[ext_resource type="Script" path="res://game/projectiles/ChangeSpeedComponent.gd" id="1_l24fp"]
+
+[node name="SpeedDownComponent" type="Node"]
+script = ExtResource("1_l24fp")
+multiplier = 0.75

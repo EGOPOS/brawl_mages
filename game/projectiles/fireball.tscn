@@ -1,6 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://cnbgt6660wjjb"]
 
-[ext_resource type="Script" path="res://game/projectiles/fireball.gd" id="1_uu7mb"]
+[ext_resource type="Script" path="res://game/projectiles/magicball.gd" id="1_xef5d"]
+[ext_resource type="Gradient" uid="uid://b8h0wcia3pxw7" path="res://assets/elements/fire.tres" id="2_m5ohb"]
+[ext_resource type="Script" path="res://core/components/HitComponent.gd" id="3_sivhh"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6hf2r"]
 viewport_path = NodePath("SubViewport")
@@ -16,18 +18,10 @@ height = 8
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="Gradient" id="Gradient_7c3ok"]
-offsets = PackedFloat32Array(0, 0.193333, 0.473333, 0.913333)
-colors = PackedColorArray(0.717367, 0.0590694, 2.88785e-07, 1, 0.997639, 0.495792, 0.0535222, 1, 0.999111, 0.43948, 3.85046e-07, 1, 0.988281, 0.853775, 0.393768, 1)
+[sub_resource type="SphereShape3D" id="SphereShape3D_cv2hn"]
 
-[sub_resource type="Gradient" id="Gradient_80p1t"]
-offsets = PackedFloat32Array(0, 0.453333, 1)
-colors = PackedColorArray(0.717647, 0.0588235, 0, 1, 0.956706, 0.380889, 0, 1, 1, 0.439216, 0, 1)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_w0qqu"]
-
-[node name="Node3D" type="Area3D"]
-script = ExtResource("1_uu7mb")
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_xef5d")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 pixel_size = 0.05
@@ -44,6 +38,7 @@ size = Vector2i(256, 256)
 [node name="CPUParticles2D" type="CPUParticles2D" parent="SubViewport/Node2D"]
 position = Vector2(128, 128)
 amount = 24
+lifetime = 1.2
 texture = SubResource("GradientTexture2D_gl54l")
 emission_shape = 1
 emission_sphere_radius = 5.0
@@ -55,22 +50,29 @@ initial_velocity_max = 15.0
 linear_accel_max = 5.0
 radial_accel_max = 5.0
 scale_amount_max = 1.5
-color_ramp = SubResource("Gradient_7c3ok")
+color_ramp = ExtResource("2_m5ohb")
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="SubViewport/Node2D"]
 z_index = 1
 position = Vector2(128, 128)
 amount = 16
+lifetime = 1.2
 texture = SubResource("GradientTexture2D_gl54l")
 emission_shape = 1
 emission_sphere_radius = 7.0
 gravity = Vector2(0, 0)
 scale_amount_max = 1.5
-color_ramp = SubResource("Gradient_80p1t")
+color_ramp = ExtResource("2_m5ohb")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 8.0
 one_shot = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_w0qqu")
+[node name="HitComponent" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("3_sivhh")
+hurt_value = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitComponent"]
+shape = SubResource("SphereShape3D_cv2hn")

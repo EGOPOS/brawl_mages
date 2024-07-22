@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4xkninm1xj4"]
+
+[ext_resource type="Script" path="res://game/projectiles/RemoteControlComponent.gd" id="1_t6vhk"]
+
+[node name="RemoteControlComponent" type="Node"]
+script = ExtResource("1_t6vhk")

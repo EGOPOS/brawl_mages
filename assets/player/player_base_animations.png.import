@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cresc0svue74i"
-path="res://.godot/imported/player_base_animations.png-33a3245095a67e29a2d81cbd6d5e3edf.ctex"
+path.bptc="res://.godot/imported/player_base_animations.png-33a3245095a67e29a2d81cbd6d5e3edf.bptc.ctex"
+path.astc="res://.godot/imported/player_base_animations.png-33a3245095a67e29a2d81cbd6d5e3edf.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/player/player_base_animations.png"
-dest_files=["res://.godot/imported/player_base_animations.png-33a3245095a67e29a2d81cbd6d5e3edf.ctex"]
+dest_files=["res://.godot/imported/player_base_animations.png-33a3245095a67e29a2d81cbd6d5e3edf.bptc.ctex", "res://.godot/imported/player_base_animations.png-33a3245095a67e29a2d81cbd6d5e3edf.astc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1

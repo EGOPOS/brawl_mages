@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf7xj6gts4166"]
+
+[ext_resource type="Script" path="res://game/projectiles/ElementComponent.gd" id="1_gmxoo"]
+
+[node name="IceComponent" type="Node"]
+script = ExtResource("1_gmxoo")
+element = 1

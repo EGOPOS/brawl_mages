@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyaljei748n4i"]
+
+[sub_resource type="GDScript" id="GDScript_bl4v2"]
+script/source = "extends PanelContainer
+
+var component: MagicResources.Components:
+	set(value):
+		component = value
+		texture_rect.texture = (func():
+			var cmp = ELEMENT_TEXTURE.duplicate()
+			cmp.region.position.x = 32 * int(component)
+			return cmp).call()
+
+const ELEMENT_TEXTURE = preload(\"res://assets/element_texture.tres\")
+
+@onready var texture_rect = $TextureRect
+
+"
+
+[node name="SetSlot" type="PanelContainer"]
+custom_minimum_size = Vector2(60, 60)
+script = SubResource("GDScript_bl4v2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5

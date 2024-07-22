@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://dlswa4iuya2ur"]
+[gd_scene load_steps=23 format=3 uid="uid://dlswa4iuya2ur"]
 
 [ext_resource type="PackedScene" uid="uid://ulkf720v65yu" path="res://assets/arena_big.glb" id="1_5m7h4"]
 [ext_resource type="Material" uid="uid://beqwhvtdk74qw" path="res://assets/dungeon_floor_material.tres" id="1_8gaqp"]
 [ext_resource type="Script" path="res://game/main/main.gd" id="1_c5w3i"]
 [ext_resource type="Script" path="res://game/main/target_camera.gd" id="3_idb6u"]
+[ext_resource type="Script" path="res://game/player/CastComponent.gd" id="5_tepns"]
 [ext_resource type="Script" path="res://game/main/CardContainer.gd" id="6_cl0gp"]
 [ext_resource type="Texture2D" uid="uid://h323p7duqka6" path="res://assets/card.png" id="8_qxth6"]
 
@@ -18,7 +19,7 @@ data = PackedVector3Array(-66.3378, -1, -66.3378, 66.3378, 1, -66.3378, -66.3378
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yne5l"]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_k7raq"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_o22b5"]
 _surfaces = [{
 "aabb": AABB(-66.3378, -1, -66.3378, 132.676, 3, 132.676),
 "format": 34896613377,
@@ -46,7 +47,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 255, 191, 86, 25, 170, 170, 168, 230, 255, 255, 86, 25, 170, 170, 168, 230, 255, 255, 86, 25, 170, 170, 168, 230, 255, 191, 0, 0, 0, 0, 0, 0, 255, 255, 86, 25, 170, 170, 86, 25, 254, 127, 86, 25, 170, 170, 86, 25, 255, 255, 86, 25, 170, 170, 86, 25, 255, 191, 255, 255, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 254, 255, 84, 213, 168, 230, 170, 170, 168, 230, 255, 191, 168, 230, 170, 170, 168, 230, 255, 255, 168, 230, 170, 170, 168, 230, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 84, 213, 168, 230, 170, 170, 86, 25, 255, 191, 168, 230, 170, 170, 86, 25, 254, 127, 168, 230, 170, 170, 86, 25, 255, 255, 0, 0, 170, 170, 254, 255, 255, 191, 0, 0, 170, 170, 0, 0, 255, 255, 255, 255, 170, 170, 0, 0, 255, 255, 255, 255, 170, 170, 0, 0, 84, 213, 255, 255, 170, 170, 254, 255, 255, 191, 255, 255, 170, 170, 254, 255, 84, 213, 0, 0, 255, 255, 254, 255, 254, 127, 0, 0, 255, 255, 254, 255, 204, 251, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 208, 251, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 204, 251, 255, 255, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 254, 255, 254, 127, 255, 255, 255, 255, 254, 255, 208, 251, 255, 255, 255, 255, 254, 255, 255, 191, 86, 25, 255, 255, 168, 230, 255, 255, 86, 25, 255, 255, 168, 230, 60, 252, 86, 25, 255, 255, 168, 230, 255, 191, 86, 25, 255, 255, 86, 25, 254, 127, 86, 25, 255, 255, 86, 25, 119, 250, 86, 25, 255, 255, 86, 25, 255, 191, 168, 230, 255, 255, 86, 25, 255, 191, 168, 230, 255, 255, 86, 25, 254, 127, 168, 230, 255, 255, 86, 25, 60, 252, 168, 230, 255, 255, 168, 230, 255, 191, 168, 230, 255, 255, 168, 230, 255, 255, 168, 230, 255, 255, 168, 230, 119, 250, 255, 255, 255, 255, 255, 255, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 191, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 0, 0, 255, 255, 255, 255, 170, 42, 170, 42, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 191, 255, 191, 255, 191, 170, 42, 170, 42, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 255, 255, 191, 255, 191, 255, 191, 255, 191, 170, 42, 170, 42, 255, 255, 255, 255, 170, 42, 170, 42, 255, 127, 255, 255, 64, 194, 130, 4, 255, 255, 255, 127, 125, 132, 192, 189, 255, 255, 255, 127, 64, 194, 130, 4, 255, 127, 0, 0, 255, 127, 255, 255, 125, 132, 192, 189, 255, 127, 0, 0, 255, 255, 255, 127, 5, 194, 12, 4, 255, 127, 0, 0, 255, 127, 255, 255, 225, 133, 14, 189, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 5, 194, 12, 4, 255, 127, 255, 255, 255, 255, 255, 127, 225, 133, 14, 189)
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_k7raq")
+shadow_mesh = SubResource("ArrayMesh_o22b5")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwl7i"]
 
@@ -86,18 +87,23 @@ data = PackedVector3Array(-5, -1, -5, 5, 1, -5, -5, 1, -5, -5, -1, -5, 5, -1, -5
 [sub_resource type="GDScript" id="GDScript_lh4s8"]
 script/source = "extends Node3D
 
-
 @onready var camera = $\"../Camera3D\"
+
+signal round_end(player)
 
 func _on_child_entered_tree(node):
 	var id = node.name.to_int()
 	if id == multiplayer.get_unique_id():
 		camera.target = node
 
-
 func _on_child_exiting_tree(node):
 	if node == camera.target:
 		camera.target = null
+	get_parent().add_child(preload(\"res://game/main/boom_particles.tscn\").instantiate())
+	await get_tree().process_frame
+	if get_child_count() == 1 and multiplayer and multiplayer.get_peers().size():
+		round_end.emit(get_child(0) if get_child_count() else null)
+		camera.target = get_child(0) if get_child_count() else null
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ttqqq"]
@@ -123,7 +129,7 @@ script = ExtResource("1_c5w3i")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 scaling_3d_scale = 2.0
-canvas_item_default_texture_filter = 0
+canvas_item_default_texture_filter = 2
 size = Vector2i(1152, 648)
 
 [node name="World" type="Node3D" parent="SubViewport"]
@@ -176,6 +182,9 @@ script = ExtResource("3_idb6u")
 [node name="Players" type="Node3D" parent="SubViewport/World"]
 script = SubResource("GDScript_lh4s8")
 
+[node name="CastComponent" type="Node" parent="SubViewport/World"]
+script = ExtResource("5_tepns")
+
 [node name="SpawnPoints" type="Node3D" parent="SubViewport/World"]
 
 [node name="1" type="Marker3D" parent="SubViewport/World/SpawnPoints"]
@@ -193,12 +202,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55, 7)
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="SubViewport/World"]
 _spawnable_scenes = PackedStringArray("res://game/player/player.tscn")
 spawn_path = NodePath("../Players")
-spawn_limit = 4
 
 [node name="SubViewport2" type="SubViewport" parent="."]
 own_world_3d = true
 transparent_bg = true
-size = Vector2i(512, 256)
+size = Vector2i(1024, 512)
 
 [node name="Node3D" type="Node3D" parent="SubViewport2"]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)

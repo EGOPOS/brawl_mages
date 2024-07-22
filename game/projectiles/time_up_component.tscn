@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmker5av27dkq"]
+
+[ext_resource type="Script" path="res://game/projectiles/LifeTimeChangeComponent.gd" id="1_87581"]
+
+[node name="TimeUpComponent" type="Node"]
+script = ExtResource("1_87581")
+time_multiplier = 2.0

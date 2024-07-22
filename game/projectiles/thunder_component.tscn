@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://1e2gqxv27eew"]
+
+[ext_resource type="Script" path="res://game/projectiles/ThunderComponent.gd" id="1_w4xg4"]
+
+[node name="ThunderComponent" type="Node"]
+script = ExtResource("1_w4xg4")
+element = 2

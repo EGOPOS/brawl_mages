@@ -1,10 +1,128 @@
-[gd_scene load_steps=4 format=3 uid="uid://pg107sskwqdf"]
+[gd_scene load_steps=24 format=3 uid="uid://pg107sskwqdf"]
 
 [ext_resource type="Script" path="res://game/userInterface/main_menu.gd" id="1_h1lnw"]
 [ext_resource type="PackedScene" uid="uid://bnt3uacv55nwv" path="res://game/userInterface/settings.tscn" id="2_hj6gs"]
+[ext_resource type="PackedScene" uid="uid://ulkf720v65yu" path="res://assets/arena_big.glb" id="3_suxyi"]
+[ext_resource type="Material" uid="uid://beqwhvtdk74qw" path="res://assets/dungeon_floor_material.tres" id="4_4k5s8"]
+[ext_resource type="Texture2D" uid="uid://cresc0svue74i" path="res://assets/player/player_base_animations.png" id="9_mnhx2"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_oc0pa"]
 viewport_path = NodePath("Control/TextureRect/SubViewport")
+
+[sub_resource type="Environment" id="Environment_4tqer"]
+background_mode = 1
+background_color = Color(0.154876, 0.154876, 0.154876, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.556953, 0.556953, 0.556953, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_v4j2v"]
+data = PackedVector3Array(-66.3378, -1, -66.3378, 66.3378, 1, -66.3378, -66.3378, 1, -66.3378, -66.3378, -1, -66.3378, 66.3378, -1, -66.3378, 66.3378, 1, -66.3378, 66.3378, -1, -66.3378, 66.3378, 1, 66.3358, 66.3378, 1, -66.3378, 66.3378, -1, -66.3378, 66.3378, -1, 66.3358, 66.3378, 1, 66.3358, 66.3378, -1, 66.3358, -66.3378, 1, 66.3358, 66.3378, 1, 66.3358, 66.3378, -1, 66.3358, -66.3378, -1, 66.3358, -66.3378, 1, 66.3358, 53.2049, 1, -53.2069, -53.2069, 1, 53.2049, -53.2069, 1, -53.2069, 53.2049, 1, -53.2069, 53.2049, 1, 53.2049, -53.2069, 1, 53.2049, 66.3378, 1, 66.3358, 66.3378, 2, -66.3378, 66.3378, 1, -66.3378, 66.3378, 1, 66.3358, 66.3378, 2, 66.3358, 66.3378, 2, -66.3378, -53.2069, 1, 53.2049, -53.2069, 2, -53.2069, -53.2069, 1, -53.2069, -53.2069, 1, 53.2049, -53.2069, 2, 53.2049, -53.2069, 2, -53.2069, 53.2049, 1, -53.2069, 53.2049, 2, 53.2049, 53.2049, 1, 53.2049, 53.2049, 1, -53.2069, 53.2049, 2, -53.2069, 53.2049, 2, 53.2049, 66.3378, 1, -66.3378, -66.3378, 2, -66.3378, -66.3378, 1, -66.3378, 66.3378, 1, -66.3378, 66.3378, 2, -66.3378, -66.3378, 2, -66.3378, -53.2069, 2, 53.2049, -66.3378, 2, -66.3378, -53.2069, 2, -53.2069, -53.2069, 2, 53.2049, -66.3378, 2, 66.3358, -66.3378, 2, -66.3378, -53.2069, 2, -53.2069, 66.3378, 2, -66.3378, 53.2049, 2, -53.2069, -53.2069, 2, -53.2069, -66.3378, 2, -66.3378, 66.3378, 2, -66.3378, 53.2049, 2, -53.2069, 66.3378, 2, 66.3358, 53.2049, 2, 53.2049, 53.2049, 2, -53.2069, 66.3378, 2, -66.3378, 66.3378, 2, 66.3358, 53.2049, 2, 53.2049, -66.3378, 2, 66.3358, -53.2069, 2, 53.2049, 53.2049, 2, 53.2049, 66.3378, 2, 66.3358, -66.3378, 2, 66.3358, 53.2049, 1, 53.2049, -53.2069, 2, 53.2049, -53.2069, 1, 53.2049, 53.2049, 1, 53.2049, 53.2049, 2, 53.2049, -53.2069, 2, 53.2049, -53.2069, 1, -53.2069, 53.2049, 2, -53.2069, 53.2049, 1, -53.2069, -53.2069, 1, -53.2069, -53.2069, 2, -53.2069, 53.2049, 2, -53.2069, -66.3378, 1, 66.3358, 66.3378, 2, 66.3358, 66.3378, 1, 66.3358, -66.3378, 1, 66.3358, -66.3378, 2, 66.3358, 66.3378, 2, 66.3358)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yne5l"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_k7raq"]
+_surfaces = [{
+"aabb": AABB(-66.3378, -1, -66.3378, 132.676, 3, 132.676),
+"format": 34896613377,
+"index_count": 90,
+"index_data": PackedByteArray(2, 0, 10, 0, 9, 0, 2, 0, 6, 0, 10, 0, 6, 0, 11, 0, 10, 0, 6, 0, 4, 0, 11, 0, 4, 0, 8, 0, 11, 0, 4, 0, 0, 0, 8, 0, 7, 0, 1, 0, 3, 0, 7, 0, 5, 0, 1, 0, 11, 0, 14, 0, 10, 0, 11, 0, 15, 0, 14, 0, 1, 0, 17, 0, 3, 0, 1, 0, 16, 0, 17, 0, 7, 0, 19, 0, 5, 0, 7, 0, 18, 0, 19, 0, 10, 0, 13, 0, 9, 0, 10, 0, 14, 0, 13, 0, 16, 0, 13, 0, 17, 0, 16, 0, 12, 0, 13, 0, 17, 0, 14, 0, 18, 0, 17, 0, 13, 0, 14, 0, 18, 0, 15, 0, 19, 0, 18, 0, 14, 0, 15, 0, 19, 0, 12, 0, 16, 0, 19, 0, 15, 0, 12, 0, 5, 0, 16, 0, 1, 0, 5, 0, 19, 0, 16, 0, 3, 0, 18, 0, 7, 0, 3, 0, 17, 0, 18, 0, 8, 0, 15, 0, 11, 0, 8, 0, 12, 0, 15, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 0, 0, 86, 25, 170, 170, 168, 230, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 86, 25, 170, 170, 86, 25, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 168, 230, 170, 170, 168, 230, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 168, 230, 170, 170, 86, 25, 0, 0, 0, 0, 170, 170, 254, 255, 0, 0, 0, 0, 170, 170, 0, 0, 0, 0, 255, 255, 170, 170, 0, 0, 0, 0, 255, 255, 170, 170, 254, 255, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 254, 255, 0, 0, 86, 25, 255, 255, 168, 230, 0, 0, 86, 25, 255, 255, 86, 25, 0, 0, 168, 230, 255, 255, 86, 25, 0, 0, 168, 230, 255, 255, 168, 230, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dn5pe"]
+resource_name = "arena_big_Cube_001"
+_surfaces = [{
+"aabb": AABB(-66.3378, -1, -66.3378, 132.676, 3, 132.676),
+"attribute_data": PackedByteArray(255, 95, 0, 0, 194, 215, 59, 72, 194, 215, 59, 72, 194, 215, 59, 72, 255, 95, 255, 191, 194, 215, 195, 119, 194, 215, 195, 119, 194, 215, 195, 119, 255, 95, 255, 63, 255, 95, 255, 63, 59, 168, 59, 72, 59, 168, 59, 72, 59, 168, 59, 72, 255, 95, 255, 127, 255, 95, 255, 127, 59, 168, 195, 119, 59, 168, 195, 119, 59, 168, 195, 119, 255, 159, 0, 0, 255, 159, 255, 191, 255, 159, 255, 127, 255, 159, 255, 127, 255, 159, 255, 63, 255, 159, 255, 63, 255, 159, 0, 0, 255, 223, 255, 63, 255, 159, 255, 191, 255, 223, 255, 127, 255, 159, 255, 127, 255, 159, 255, 127, 255, 159, 255, 127, 255, 159, 255, 63, 255, 159, 255, 63, 255, 159, 255, 63, 194, 215, 59, 72, 194, 215, 59, 72, 194, 215, 59, 72, 194, 215, 195, 119, 194, 215, 195, 119, 194, 215, 195, 119, 59, 168, 195, 119, 59, 168, 195, 119, 59, 168, 195, 119, 59, 168, 59, 72, 59, 168, 59, 72, 59, 168, 59, 72),
+"format": 34896613399,
+"index_count": 90,
+"index_data": PackedByteArray(4, 0, 20, 0, 19, 0, 4, 0, 13, 0, 20, 0, 14, 0, 23, 0, 21, 0, 14, 0, 9, 0, 23, 0, 8, 0, 18, 0, 22, 0, 8, 0, 0, 0, 18, 0, 17, 0, 2, 0, 6, 0, 17, 0, 12, 0, 2, 0, 23, 0, 30, 0, 21, 0, 23, 0, 33, 0, 30, 0, 3, 0, 39, 0, 7, 0, 3, 0, 36, 0, 39, 0, 15, 0, 43, 0, 10, 0, 15, 0, 40, 0, 43, 0, 20, 0, 26, 0, 19, 0, 20, 0, 28, 0, 26, 0, 35, 0, 27, 0, 38, 0, 35, 0, 25, 0, 27, 0, 38, 0, 29, 0, 42, 0, 38, 0, 27, 0, 29, 0, 42, 0, 32, 0, 45, 0, 42, 0, 29, 0, 32, 0, 45, 0, 25, 0, 35, 0, 45, 0, 32, 0, 25, 0, 11, 0, 34, 0, 1, 0, 11, 0, 44, 0, 34, 0, 5, 0, 41, 0, 16, 0, 5, 0, 37, 0, 41, 0, 18, 0, 31, 0, 22, 0, 18, 0, 24, 0, 31, 0),
+"material": SubResource("StandardMaterial3D_yne5l"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 46,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 255, 191, 86, 25, 170, 170, 168, 230, 255, 255, 86, 25, 170, 170, 168, 230, 255, 255, 86, 25, 170, 170, 168, 230, 255, 191, 0, 0, 0, 0, 0, 0, 255, 255, 86, 25, 170, 170, 86, 25, 254, 127, 86, 25, 170, 170, 86, 25, 255, 255, 86, 25, 170, 170, 86, 25, 255, 191, 255, 255, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 254, 255, 84, 213, 168, 230, 170, 170, 168, 230, 255, 191, 168, 230, 170, 170, 168, 230, 255, 255, 168, 230, 170, 170, 168, 230, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 84, 213, 168, 230, 170, 170, 86, 25, 255, 191, 168, 230, 170, 170, 86, 25, 254, 127, 168, 230, 170, 170, 86, 25, 255, 255, 0, 0, 170, 170, 254, 255, 255, 191, 0, 0, 170, 170, 0, 0, 255, 255, 255, 255, 170, 170, 0, 0, 255, 255, 255, 255, 170, 170, 0, 0, 84, 213, 255, 255, 170, 170, 254, 255, 255, 191, 255, 255, 170, 170, 254, 255, 84, 213, 0, 0, 255, 255, 254, 255, 254, 127, 0, 0, 255, 255, 254, 255, 204, 251, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 208, 251, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 204, 251, 255, 255, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 254, 255, 254, 127, 255, 255, 255, 255, 254, 255, 208, 251, 255, 255, 255, 255, 254, 255, 255, 191, 86, 25, 255, 255, 168, 230, 255, 255, 86, 25, 255, 255, 168, 230, 60, 252, 86, 25, 255, 255, 168, 230, 255, 191, 86, 25, 255, 255, 86, 25, 254, 127, 86, 25, 255, 255, 86, 25, 119, 250, 86, 25, 255, 255, 86, 25, 255, 191, 168, 230, 255, 255, 86, 25, 255, 191, 168, 230, 255, 255, 86, 25, 254, 127, 168, 230, 255, 255, 86, 25, 60, 252, 168, 230, 255, 255, 168, 230, 255, 191, 168, 230, 255, 255, 168, 230, 255, 255, 168, 230, 255, 255, 168, 230, 119, 250, 255, 255, 255, 255, 255, 255, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 191, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 0, 0, 255, 255, 255, 255, 170, 42, 170, 42, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 191, 255, 191, 255, 191, 170, 42, 170, 42, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 255, 255, 191, 255, 191, 255, 191, 255, 191, 170, 42, 170, 42, 255, 255, 255, 255, 170, 42, 170, 42, 255, 127, 255, 255, 64, 194, 130, 4, 255, 255, 255, 127, 125, 132, 192, 189, 255, 255, 255, 127, 64, 194, 130, 4, 255, 127, 0, 0, 255, 127, 255, 255, 125, 132, 192, 189, 255, 127, 0, 0, 255, 255, 255, 127, 5, 194, 12, 4, 255, 127, 0, 0, 255, 127, 255, 255, 225, 133, 14, 189, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 5, 194, 12, 4, 255, 127, 255, 255, 255, 255, 255, 127, 225, 133, 14, 189)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_k7raq")
+
+[sub_resource type="Animation" id="Animation_3x7wb"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame_coords")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(2, 0), Vector2i(4, 0), Vector2i(6, 0), Vector2i(8, 0), Vector2i(10, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_peykd"]
+_data = {
+"idle": SubResource("Animation_3x7wb")
+}
+
+[sub_resource type="GDScript" id="GDScript_g1o4q"]
+script/source = "extends AnimationPlayer
+
+func _ready():
+	play(\"idle\")
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pourq"]
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+heightmap_scale = -16.0
+billboard_keep_scale = true
+point_size = 13.0
+
+[sub_resource type="Curve" id="Curve_t0g2k"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_snevw"]
+curve = SubResource("Curve_t0g2k")
+
+[sub_resource type="Gradient" id="Gradient_k77nj"]
+offsets = PackedFloat32Array(0, 0.534392, 1)
+colors = PackedColorArray(0.987355, 0.622639, 0.089811, 1, 1, 0.349773, 0.249264, 1, 0.983624, 0.920448, 0.718207, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cm08m"]
+gradient = SubResource("Gradient_k77nj")
+
+[sub_resource type="CurveTexture" id="CurveTexture_g80vg"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8w4u8"]
+emission_shape_scale = Vector3(10, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_max = 10.0
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 1.99998
+gravity = Vector3(0, 5, 0)
+scale_min = 0.8
+scale_max = 1.2
+color = Color(0.593134, 0.593134, 0.593134, 1)
+color_ramp = SubResource("GradientTexture1D_cm08m")
+alpha_curve = SubResource("CurveTexture_snevw")
+emission_curve = SubResource("CurveTexture_g80vg")
+turbulence_noise_scale = 3.12
+
+[sub_resource type="SphereMesh" id="SphereMesh_d1mqc"]
+
+[sub_resource type="Skin" id="Skin_mmypg"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_h1lnw")
@@ -32,16 +150,104 @@ expand_mode = 1
 canvas_item_default_texture_filter = 0
 size = Vector2i(1152, 648)
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Control/TextureRect/SubViewport"]
+transform = Transform3D(0.52101, 0.312827, -0.794159, 0, 0.930418, 0.366501, 0.853551, -0.190951, 0.484756, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Control/TextureRect/SubViewport"]
+environment = SubResource("Environment_4tqer")
+
+[node name="arena_big" parent="Control/TextureRect/SubViewport" instance=ExtResource("3_suxyi")]
+
+[node name="Cube" parent="Control/TextureRect/SubViewport/arena_big" index="0"]
+material_overlay = ExtResource("4_4k5s8")
+cast_shadow = 0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Control/TextureRect/SubViewport/arena_big/Cube" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Control/TextureRect/SubViewport/arena_big/Cube/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_v4j2v")
+
+[node name="Cube2" type="MeshInstance3D" parent="Control/TextureRect/SubViewport/arena_big"]
+transform = Transform3D(0.15, 0, 0, 0, -1, 1.31134e-08, 0, -8.74228e-08, -0.15, 0, -2, 0)
+material_overlay = ExtResource("4_4k5s8")
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_dn5pe")
+skeleton = NodePath("")
+
+[node name="Camera3D" type="Camera3D" parent="Control/TextureRect/SubViewport"]
+transform = Transform3D(-4.22219e-08, -0.422618, 0.906308, 1.13133e-08, 0.906308, 0.422618, -1, 2.80971e-08, -3.34848e-08, 12, 5, 0)
+
+[node name="Node3D" type="Node3D" parent="Control/TextureRect/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Control/TextureRect/SubViewport/Node3D"]
+pixel_size = 0.07
+billboard = 2
+texture_filter = 0
+texture = ExtResource("9_mnhx2")
+hframes = 12
+vframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/TextureRect/SubViewport/Node3D"]
+libraries = {
+"": SubResource("AnimationLibrary_peykd")
+}
+script = SubResource("GDScript_g1o4q")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Control/TextureRect/SubViewport"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14, -2, 0)
+material_overlay = SubResource("StandardMaterial3D_pourq")
+cast_shadow = 0
+amount = 64
+lifetime = 2.0
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_8w4u8")
+draw_pass_1 = SubResource("SphereMesh_d1mqc")
+draw_skin = SubResource("Skin_mmypg")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Control/TextureRect/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76907, -2, 15.4458)
+material_overlay = SubResource("StandardMaterial3D_pourq")
+cast_shadow = 0
+amount = 64
+lifetime = 2.0
+randomness = 1.0
+fixed_fps = 60
+visibility_aabb = AABB(-4, -4, -3.42851, 8, 8, 6.85702)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_8w4u8")
+draw_pass_1 = SubResource("SphereMesh_d1mqc")
+draw_skin = SubResource("Skin_mmypg")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Control/TextureRect/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.76907, -2, -16.673)
+material_overlay = SubResource("StandardMaterial3D_pourq")
+cast_shadow = 0
+amount = 64
+lifetime = 2.0
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_8w4u8")
+draw_pass_1 = SubResource("SphereMesh_d1mqc")
+draw_skin = SubResource("Skin_mmypg")
+
 [node name="Buttons" type="PanelContainer" parent="Control"]
 custom_minimum_size = Vector2(135, 100)
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -64.5
-offset_right = 135.0
-offset_bottom = 64.5
-grow_vertical = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -67.5
+offset_top = -207.0
+offset_right = 67.5
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="CenterContainer" type="MarginContainer" parent="Control/Buttons"]
 layout_mode = 2
@@ -106,3 +312,5 @@ visible = false
 layout_mode = 1
 offset_top = -125.0
 offset_bottom = 125.0
+
+[editable path="Control/TextureRect/SubViewport/arena_big"]

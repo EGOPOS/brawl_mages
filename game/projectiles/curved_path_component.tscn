@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwllhdh1fc2do"]
+
+[ext_resource type="Script" path="res://game/projectiles/CurvedPathComponent.gd" id="1_dhmtq"]
+
+[node name="CurvedPathComponent" type="Node"]
+script = ExtResource("1_dhmtq")

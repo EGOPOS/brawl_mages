@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://mrjpoubpi8jl"]
+
+[ext_resource type="Script" path="res://game/projectiles/FireComponent.gd" id="1_skyg4"]
+
+[node name="FireComponent" type="Node"]
+script = ExtResource("1_skyg4")
